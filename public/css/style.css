@@ -1,0 +1,68 @@
+.left {
+  float: left;
+}
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
+}
+
+.chess {
+  position: relative;
+}
+
+.dot {
+  width: 30%;
+  height: 30%;
+  margin: 0 auto;
+  display: block;
+  background: greenyellow;
+  border-radius: 30px;
+  margin-top: 30%;
+  display: none;
+}
+
+.js-active-dot {
+  display: block;
+}
+
+[data-color="white"]{
+  background-color: #fff;
+  width: 90px;
+  height: 90px;
+  display: inline-block;
+  border: 1px solid grey;
+  box-sizing: border-box;
+  background-image: url(../images/chess.svg);
+}
+
+[data-color="black"]{
+  background-color: grey;
+  width: 90px;
+  height: 90px;
+  display: inline-block;
+  box-sizing: border-box;
+  background-image: url(../images/chess.svg);
+}
+
+.king-white { background-position: -64px -212px; }
+.king-black { background-position: -64px -71px; }
+.queen-white { background-position: -234px -212px; }
+.queen-black { background-position: -232px -71px; }
+.bishop-white { background-position: -565px -212px; }
+.bishop-black { background-position: -565px -71px; }
+.knight-white {  background-position: -735px -216px; }
+.knight-black { background-position: -735px -74px; }
+.rock-white { background-position: -401px -216px; }
+.rock-black { background-position: -401px -74px; }
+.peon-white { background-position: -900px -214px; }
+.peon-black { background-position: -900px -73px; }
+
+.js-marked {
+  background-color: mediumaquamarine;
+  border: 3px solid blue;
+}
