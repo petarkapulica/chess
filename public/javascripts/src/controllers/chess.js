@@ -56,6 +56,10 @@ define([
         this.player == "white" ?
         this.player = "black" :
         this.player = "white";
+        if( $(".chess").find('.king-' + this.player).length === 0 ){
+          alert('Check mate! New game?');
+          location.reload();
+        }
   	},
 
   	showPossibleMoves : function()

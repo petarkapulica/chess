@@ -104,7 +104,7 @@ define([
     },
 
     checkChess : function(player,key,value)
-    {
+    {return false;  //this needs to be uncommented if validation moves
       if( $(".chess").find("[data-field='" + value + "']").hasClass('king-' + player) )
       {
         this.chess = true;
@@ -112,7 +112,7 @@ define([
     },
 
     checkIfStillChess : function(value,player)
-    {
+    {return false;  //this needs to be uncommented if validation moves
       if($(".chess").find(".js-marked").hasClass('king-' + player)){
         return $.inArray(value, this.allPossibleMoves) !== -1 ?
         true : false;

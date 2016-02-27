@@ -1,5 +1,5 @@
 <head>
-    <title>Sah</title>
+    <title>chess</title>
     <link rel="stylesheet" href="public/css/style.css" media="all" />
 </head>
 
