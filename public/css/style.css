@@ -13,6 +13,9 @@
 
 .chess {
   position: relative;
+  width: 768px;
+  overflow-y: auto;
+  margin: 0px auto;
 }
 
 .dot {

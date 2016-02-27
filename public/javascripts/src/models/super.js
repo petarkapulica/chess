@@ -50,11 +50,14 @@ define([
       $.each( this.allPossibleMoves, $.proxy(this.checkChess, this, player));
       if(this.chess)
       {
-        var index = this.moves.indexOf(value);
-        if (index > -1)
+        if(this.checkIfStillChess(value,player))
         {
-          delete this.moves[key];
-        };
+          var index = this.moves.indexOf(value);
+          if (index > -1)
+          {
+            delete this.moves[key];
+          };
+        }
       }
       $('.js-tmp-click').removeClass('js-tmp-click');
     },
@@ -65,27 +68,21 @@ define([
       switch (true) {
   			case (this.piece.name === "peon" ):
           this.allPossibleMoves = $.merge( this.allPossibleMoves, new Peon().peonRule(this.piece) );
-          //this.allPossibleMoves.push( new Peon().peonRule(this.piece) );
   			break;
   			case (this.piece.name === "knight" ):
           this.allPossibleMoves = $.merge( this.allPossibleMoves, new Knight().knightRule(this.piece) );
-  			    //  this.allPossibleMoves.push( new Knight().knightRule(this.piece) );
         break;
   			case (this.piece.name === "bishop" ):
           this.allPossibleMoves = $.merge( this.allPossibleMoves, new Bishop().bishopRule(this.piece) );
-  			    //  this.allPossibleMoves.push( new Bishop().bishopRule(this.piece) );
         break;
   			case (this.piece.name === "queen" ):
           this.allPossibleMoves = $.merge( this.allPossibleMoves, new Queen().queenRule(this.piece) );
-  			    //  this.allPossibleMoves.push( new Queen().queenRule(this.piece) );
         break;
   			case (this.piece.name === "king" ):
           this.allPossibleMoves = $.merge( this.allPossibleMoves, new King().kingRule(this.piece) );
-  			// this.allPossibleMoves.push( new King().kingRule(this.piece) );
         break;
   			case (this.piece.name === "rock" ):
          this.allPossibleMoves = $.merge( this.allPossibleMoves, new Rock().rockRule(this.piece) );
-  			// this.allPossibleMoves.push( new Rock().rockRule(this.piece) );
         break;
       }
     },
@@ -111,6 +108,24 @@ define([
       if( $(".chess").find("[data-field='" + value + "']").hasClass('king-' + player) )
       {
         this.chess = true;
+      }
+    },
+
+    checkIfStillChess : function(value,player)
+    {
+      if($(".chess").find(".js-marked").hasClass('king-' + player)){
+        return $.inArray(value, this.allPossibleMoves) !== -1 ?
+        true : false;
+      }
+      // var tmpKing = $(".chess").find(".king-"+player).attr('data-field');
+      // if( $(".chess").find("[data-field='" + tmpKing + "']").hasClass('king-' + player) )
+      // {
+      //   return true;
+      // }
+      // return false;
+      else{
+        $(".chess").find(".js-marked").addClass('tmpOld');
+        $(".chess").find("[data-field='" + value + "']").addClass('tmpNew');
       }
     }
 
