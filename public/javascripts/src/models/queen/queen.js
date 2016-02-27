@@ -12,8 +12,11 @@ define([
 
 		queenRule : function(queen)
 		{
-      var a = new Bishop().bishopRule(queen);
-      debugger;
+      var moves = [];
+      var diagonals = new Bishop().bishopRule(queen);
+      var verticals = new Rock().rockRule(queen);
+      var moves = $.merge( diagonals, verticals );
+      return moves;
 		}
 
 	};

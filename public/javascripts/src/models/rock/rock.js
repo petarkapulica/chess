@@ -29,18 +29,25 @@ define([
       for (field = jump; field < 65 && field > -65 ; field += jump)
       {
         var nextField = $('.chess > div[data-field = ' + (fieldNo + field) + ']');
-        if( $(nextField).hasClass(player) )
+        if( $(nextField).hasClass(player) || $(nextField).length == 0 )
         {
           return false;
         }
-        else if ( $(nextField).hasClass('white') || $(nextField).hasClass('black') )
+        else if (
+					$(nextField).hasClass('white') ||
+					$(nextField).hasClass('black') ||
+					$(nextField).hasClass('js-tmp-click')	//added for chess
+				)
         {
-          this.possibleFieldsToMoveTo.push(nextField);
-          return false;
+          this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
+					if( !$(nextField).hasClass('js-marked') )
+					{
+						return false;
+					}
         }
         else
         {
-          this.possibleFieldsToMoveTo.push(nextField);
+          this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
         }
       }
     },
@@ -52,7 +59,7 @@ define([
       for (field = jump; field < 65 && field > -65 ; field += jump)
       {
         var nextField = $('.chess > div[data-field = ' + (fieldNo + field) + ']');
-        if( $(nextField).hasClass(player) )
+        if( $(nextField).hasClass(player) || $(nextField).length == 0  )
         {
           return false;
         }
@@ -60,14 +67,21 @@ define([
         {
           return false;
         }
-        else if( $(nextField).hasClass('black') || $(nextField).hasClass('white')  )
+        else if(
+					$(nextField).hasClass('black') ||
+					$(nextField).hasClass('white') ||
+					$(nextField).hasClass('js-tmp-click') 	//added for chess
+				)
         {
-          this.possibleFieldsToMoveTo.push(nextField);
-          return false;
+          this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
+					if( !$(nextField).hasClass('js-marked') )
+					{
+						return false;
+					}
         }
         else
         {
-          this.possibleFieldsToMoveTo.push(nextField);
+          this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
           tmpColorArray.push( $(nextField).attr("data-color") );
         }
       }

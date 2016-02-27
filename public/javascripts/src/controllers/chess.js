@@ -69,30 +69,10 @@ define([
   	getPiece : function()
   	{
   		var piece = $('.js-marked');
-  		switch (true) {
-  			case (piece.attr('class').indexOf('peon') > -1 ):
-  			this.piece.name = 'peon';
-  			break;
-  			case (piece.attr('class').indexOf('knight') > -1 ):
-  			this.piece.name = 'knight';
-  			break;
-  			case (piece.attr('class').indexOf('bishop') > -1 ):
-  			this.piece.name = 'bishop';
-  			break;
-  			case (piece.attr('class').indexOf('queen') > -1 ):
-  			this.piece.name = 'queen';
-  			break;
-  			case (piece.attr('class').indexOf('king') > -1 ):
-  			this.piece.name = 'king';
-  			break;
-  			case (piece.attr('class').indexOf('rock') > -1 ):
-  			this.piece.name = 'rock';
-  			break;
-
-  		}
-  		this.piece.field = piece.attr('data-color');
-  		this.piece.position = parseInt(piece.attr('data-field'));
-  		this.piece.player = piece.attr('class').indexOf('white') > -1 ?
+      this.piece.name = $(piece).attr('data-piece');
+  		this.piece.field = $(piece).attr('data-color');
+  		this.piece.position = parseInt($(piece).attr('data-field'));
+  		this.piece.player = $(piece).attr('class').indexOf('white') > -1 ?
   		'white' : 'black';
   	}
   };

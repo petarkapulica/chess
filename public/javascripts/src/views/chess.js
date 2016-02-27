@@ -1,6 +1,6 @@
 ;
 define([
-  
+
 ],function(){
 
   var ChessView = function(){
@@ -16,19 +16,21 @@ define([
 
     drawDot : function(key,value)
     {
-      $(value).children('span').addClass('js-active-dot');
+      $(".chess").find("[data-field='" + value + "']").children('span').addClass('js-active-dot');
     },
 
     drawMove : function(move)
     {
+      var myAttr = $('.js-marked').attr('data-piece');
       move.removeClass();
+      move.removeAttr('data-piece');
       $('.js-active-dot').removeClass('js-active-dot');
       var classes = $('.js-marked').attr('class').split(' ');
       $.each(classes,function(key,value){
         move.addClass(value);
-        $('.js-marked').removeClass(value);
+        $('.js-marked').removeAttr('data-piece').removeClass(value);
       });
-      move.addClass('js-moved');
+      move.addClass('js-moved').attr('data-piece', myAttr);
       $('.js-marked').removeClass('js-marked');
     }
   };

@@ -4,8 +4,10 @@ define([
      	'models/bishop/bishop',
 			'models/peon/peon',
       'models/rock/rock',
-      'models/queen/queen'
-],function(Knight, Bishop, Peon, Rock, Queen){
+      'models/queen/queen',
+      'models/king/king',
+      'models/super'
+],function(Knight, Bishop, Peon, Rock, Queen, King, SuperObject){
 
 	var ChessModel = function(){
 
@@ -17,19 +19,28 @@ define([
 		{
 			switch (piece.name) {
 				case 'knight':
-					return new Knight().knightRule(piece);
+					var moves = new Knight().knightRule(piece);
+          return new SuperObject().doMagic(moves, piece.player);
 					break;
 				case 'bishop':
-					return new Bishop().bishopRule(piece);
+          var moves = new Bishop().bishopRule(piece);
+          return new SuperObject().doMagic(moves, piece.player);
 					break;
 				case 'peon':
-					return new Peon().peonRule(piece);
+          var moves = new Peon().peonRule(piece);
+          return new SuperObject().doMagic(moves, piece.player);
 					break;
         case 'rock':
-					return new Rock().rockRule(piece);
+          var moves = new Rock().rockRule(piece);
+          return new SuperObject().doMagic(moves, piece.player);
 					break;
         case 'queen':
-					return new Queen().queenRule(piece);
+          var moves = new Queen().queenRule(piece);
+          return new SuperObject().doMagic(moves, piece.player);
+					break;
+        case 'king':
+          var moves = new King().kingRule(piece);
+          return new SuperObject().doMagic(moves, piece.player);
 					break;
 			}
 		}

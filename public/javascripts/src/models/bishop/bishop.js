@@ -33,15 +33,21 @@ define([
         {
           return false;
         }
-        else if ( $(nextField).hasClass('white') || $(nextField).hasClass('black') )
+        else if (
+					$(nextField).hasClass('white') ||
+					$(nextField).hasClass('black') ||
+					$(nextField).hasClass('js-tmp-click')	//added for chess
+				)
         {
-          this.possibleFieldsToMoveTo.push(nextField);
-          return false;
+          this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
+					if( !$(nextField).hasClass('js-marked') )
+					{
+						return false;
+					}
         }
         else
         {
-					this.possibleFieldsToMoveTo.push(field+fieldNo);
-          //this.possibleFieldsToMoveTo.push(nextField);
+					this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
         }
       }
     }

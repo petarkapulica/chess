@@ -30,17 +30,21 @@ define([
       {
         return false;
       }
-      this.possibleFieldsToMoveTo.push(nextField);
+      this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
       var nextField = $('.chess > div[data-field = ' + (fieldNo + 2*jump) + ']');
       if(
         $(nextField).hasClass('black') ||
         $(nextField).hasClass('white') ||
+				$(nextField).hasClass('js-tmp-click') ||	//added for chess
         $('.chess > div[data-field = ' + fieldNo + ']').hasClass('js-moved')
       )
       {
-        return false;
+				if( !$(nextField).hasClass('js-marked') )
+				{
+					return false;
+				}
       }
-      this.possibleFieldsToMoveTo.push(nextField);
+      this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
     },
 
     peonEating : function(color, player, fieldNo)
@@ -54,7 +58,7 @@ define([
           ( $(nextField).hasClass('black') ||$(nextField).hasClass('white') )
         )
       {
-        this.possibleFieldsToMoveTo.push(nextField);
+        this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
       }
       var nextField = $('.chess > div[data-field = ' + (fieldNo + jump2) + ']');
       if(
@@ -63,7 +67,7 @@ define([
           ( $(nextField).hasClass('black') ||$(nextField).hasClass('white') )
         )
       {
-        this.possibleFieldsToMoveTo.push(nextField);
+        this.possibleFieldsToMoveTo.push($(nextField).attr('data-field'));
       }
     }
 

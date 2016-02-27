@@ -36,8 +36,7 @@ define([
 				parseInt($(value).attr('data-field')) + 17 == fieldNo
 			)
 			{
-				debugger;
-				this.possibleFieldsToMoveTo.push(value);
+				this.possibleFieldsToMoveTo.push($(value).attr('data-field'));
 			}
 		}
 	};
