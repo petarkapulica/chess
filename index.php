@@ -4,6 +4,11 @@
 </head>
 
 <body>
+  <div class="score-board">
+    <span class="score-board-black">Black</span>
+    <span class="score-board-white">White</span>
+     is on the move ...
+  </div>
   <div class="chess clearfix">
     <?php
       require_once('setup.php');

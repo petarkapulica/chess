@@ -56,10 +56,8 @@ define([
         this.player == "white" ?
         this.player = "black" :
         this.player = "white";
-        if( $(".chess").find('.king-' + this.player).length === 0 ){
-          alert('Check mate! New game?');
-          location.reload();
-        }
+        this.checkIfEndGame();
+        this.changePlayer(this.player);
   	},
 
   	showPossibleMoves : function()
@@ -78,7 +76,21 @@ define([
   		this.piece.position = parseInt($(piece).attr('data-field'));
   		this.piece.player = $(piece).attr('class').indexOf('white') > -1 ?
   		'white' : 'black';
-  	}
+  	},
+
+    checkIfEndGame : function()
+    {
+      if( $(".chess").find('.king-' + this.player).length === 0 ){
+        alert('Check mate! New game?');
+        location.reload();
+      }
+    },
+
+    changePlayer : function(player)
+    {
+      $('.score-board-black').toggle(player === "black");
+      $('.score-board-white').toggle(player === "white");
+    }
   };
   return ChessController;
 });

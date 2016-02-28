@@ -69,3 +69,11 @@
   background-color: mediumaquamarine;
   border: 3px solid blue;
 }
+
+.score-board {
+  font-size: 26px;
+}
+
+.score-board-black {
+  display: none;
+}
