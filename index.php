@@ -16,7 +16,7 @@
       require_once('setup.php');
      ?>
   </div>
-  <footer>
+<footer>
       <script src="public/javascripts/dist/config.js"></script>
       <script data-main="public/javascripts/src/app" src="public/bower/requirejs/require.js"></script>
 </footer>
