@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
     <title>chess</title>
     <link rel="stylesheet" href="public/css/style.css" media="all" />
@@ -14,9 +16,9 @@
       require_once('setup.php');
      ?>
   </div>
-</body>
-
-<footer>
-  <script src="public/javascripts/dist/config.js"></script>
-  <script data-main="public/javascripts/src/app" src="public/bower/requirejs/require.js"></script>
+  <footer>
+      <script src="public/javascripts/dist/config.js"></script>
+      <script data-main="public/javascripts/src/app" src="public/bower/requirejs/require.js"></script>
 </footer>
+</body>
+</html>
